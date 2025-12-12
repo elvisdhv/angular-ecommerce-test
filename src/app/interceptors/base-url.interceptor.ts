@@ -5,7 +5,7 @@ export const baseUrlInterceptor: HttpInterceptorFn = (req, next) => {
   const baseUrl = environment.baseUrl;
   if (!req.url.startsWith('http')) {
     const apiReq = req.clone({
-      url: `${baseUrl}/${req.url.replace(/^\//, '')}`,
+      url: `${baseUrl}${req.url.replace(/^\//, '')}`,
     });
     return next(apiReq);
   }
