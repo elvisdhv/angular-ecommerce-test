@@ -1,7 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+@import 'primeicons/primeicons.css';
+:root {
+  --primary: var(--color-blue-400);
+  --on-primary: var(--color-neutral-50);
+  --primary-dark: var(--color-blue-900);
+  --on-primary-dark: var(--color-neutral-50);
+  --surface: var(--color-neutral-50);
+}
 body {
-  background: #1e1e1f;
-  color: #efefef;
 }

@@ -1,0 +1,21 @@
+.price {
+  background: var(--primary-dark);
+  color: var(--on-primary-dark);
+}
+.img-container {
+  overflow: hidden; /* corta lo que sobresalga */
+}
+
+.img-container img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.cart-plus {
+  background: linear-gradient(to left, var(--primary), var(--primary-dark));
+  color: var(--on-primary);
+}

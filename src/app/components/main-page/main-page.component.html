@@ -1,6 +1,20 @@
 <main>
-  <div class="title">
-    <h1 class="text-3xl text-center my-4">Angular Shop</h1>
-    <i class="pi pi-pencil"></i>
+  <div class="title flex items-center justify-between px-4 sticky top-0">
+    <h1 class="text-2xl text-center my-4">Angular Shop</h1>
+    <i class="text-xl pi pi-shopping-cart"></i>
+  </div>
+  <div class="categories px-2 overflow-auto flex flex-nowrap py-2">
+    @for (category of categories(); track category) {
+    <span class="text-nowrap text-sm border rounded-sm px-2 mx-0.5 bg-[--primary]">
+      {{ category }}
+    </span>
+    }
+  </div>
+  <div class="articles grid">
+    @for (product of products(); track product.id) { @defer(on viewport) {
+    <app-product-item [product]="product" />
+    }@placeholder {
+    <div class="product-placeholder h-96"></div>
+    } }
   </div>
 </main>

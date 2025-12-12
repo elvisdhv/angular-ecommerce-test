@@ -1,0 +1,18 @@
+<div class="item-container flex flex-col h-96 max-h-96 p-4 sm shadow m-2 rounded-lg">
+  <div class="top flex justify-between items-start">
+    <span>
+      {{ product().title }}
+    </span>
+    <span class="price border px-2 rounded-xl text-sm ml-1 py-1"> ${{ product().price }} </span>
+  </div>
+  <div class="img-container flex justify-center mt-6 grow">
+    <img [src]="product().image" alt="" />
+  </div>
+  <div class="actions flex justify-between items-center mt-4">
+    <button class="rounded-2xl py-1 px-3 font-bold">Ver detalles</button>
+    <button class="cart-plus flex px-4 py-0.5 rounded-2xl gap-1 items-center">
+      <span class="font-semibold">Agregar al carrito</span>
+      <i class="pi pi-cart-plus"></i>
+    </button>
+  </div>
+</div>
