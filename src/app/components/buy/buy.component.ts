@@ -103,7 +103,12 @@ export class BuyComponent implements OnInit {
   }
   processPayment() {
     this.finishBuyFormGroup.reset();
+    this.router.navigate(['buy-succesfull'], {
+      state: {
+        products: this.shopService.getSelectedProducts(),
+        total: this.totalPrice(),
+      },
+    });
     this.shopService.finishBuy();
-    this.router.navigate(['']);
   }
 }

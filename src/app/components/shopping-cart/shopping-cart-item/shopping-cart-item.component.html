@@ -8,10 +8,13 @@
     </span>
     <span class="price rounded-2xl px-2 text-sm ml-1"> ${{ product().price }} </span>
   </div>
+  @if (deleteButton()) {
+
   <div
     class="delete-button absolute bottom-2 right-2"
     (click)="shopService.removeProductFromCart(product().id)"
   >
     <i class="pi pi-trash text-xl"></i>
   </div>
+  }
 </div>

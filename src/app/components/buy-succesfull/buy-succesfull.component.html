@@ -1,0 +1,13 @@
+<div class="buy-succesful flex flex-col w-full py-6">
+  <span class="text-xl font-semibold text-center"
+    >Compra realizada exitosamente
+    <i class="pi pi-check-circle text-green-600"></i>
+  </span>
+  <span class="m-2 text-center">Total: ${{ total() }}</span>
+  <div class="products-list flex flex-col">
+    @for (product of selectedProducts(); track $index) {
+    <app-shopping-cart-item [deleteButton]="false" [product]="product" />
+    }
+  </div>
+  <button (click)="backToShop()" class="py-2 font-bold">Volver a la tienda</button>
+</div>

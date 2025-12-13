@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { BuySuccesfullComponent } from './components/buy-succesfull/buy-succesfull.component';
 import { BuyComponent } from './components/buy/buy.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
@@ -15,4 +16,5 @@ export const routes: Routes = [
     loadComponent: () => ShoppingCartComponent,
   },
   { path: 'buy', canActivate: [canBuyGuard], loadComponent: () => BuyComponent },
+  { path: 'buy-succesfull', loadComponent: () => BuySuccesfullComponent },
 ];

@@ -11,5 +11,6 @@ import { ShopStateService } from '../../../services/shop-state.service';
 })
 export class ShoppingCartItemComponent {
   product = input.required<ProductModel>();
+  deleteButton = input(true);
   protected shopService = inject(ShopStateService);
 }
