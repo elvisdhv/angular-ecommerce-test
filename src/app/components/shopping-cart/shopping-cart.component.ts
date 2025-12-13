@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConfirmationService } from 'primeng/api';
 import { ShopStateService } from '../../services/shop-state.service';
 import { ShoppingCartItemComponent } from './shopping-cart-item/shopping-cart-item.component';
-
 @Component({
   selector: 'app-shopping-cart',
   standalone: true,
@@ -11,8 +11,8 @@ import { ShoppingCartItemComponent } from './shopping-cart-item/shopping-cart-it
   styleUrl: './shopping-cart.component.scss',
 })
 export class ShoppingCartComponent {
-  shopStateService = inject(ShopStateService);
-  router = inject(Router);
+  protected shopStateService = inject(ShopStateService);
+  private router = inject(Router);
   return() {
     this.router.navigate(['']);
   }

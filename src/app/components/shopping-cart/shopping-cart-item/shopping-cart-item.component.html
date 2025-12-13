@@ -1,4 +1,4 @@
-<div class="cart-item flex m-4 my-2 p-4 gap-2 shadow rounded-lg">
+<div class="cart-item relative flex m-4 my-2 p-4 gap-2 shadow rounded-lg">
   <div class="img w-16">
     <img [src]="product().image" [alt]="product().title" />
   </div>
@@ -7,5 +7,8 @@
       {{ product().title }}
     </span>
     <span class="price rounded-2xl px-2 text-sm ml-1"> ${{ product().price }} </span>
+  </div>
+  <div class="delete-button absolute bottom-2 right-2">
+    <i class="pi pi-trash text-xl"></i>
   </div>
 </div>
