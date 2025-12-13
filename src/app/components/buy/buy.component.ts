@@ -98,8 +98,8 @@ export class BuyComponent implements OnInit {
       this.blankConfirmPassword.set(false);
       this.passworDoesNotMatch.set(false);
       this.wrongPassword.set(false);
+      this.processPayment();
     }
-    this.processPayment();
   }
   processPayment() {
     this.finishBuyFormGroup.reset();

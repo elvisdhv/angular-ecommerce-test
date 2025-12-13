@@ -1,4 +1,8 @@
-<div class="item-container flex flex-col h-108 max-h-108 p-4 sm shadow m-2 rounded-lg">
+<div
+  class="item-container flex flex-col h-108 max-h-108 p-4 sm shadow m-2 rounded-lg"
+  appClickAction
+  [logMessage]="`Clickeado: ${product().title}`"
+>
   <div class="top flex justify-between items-start">
     <span>
       {{ product().title }}
