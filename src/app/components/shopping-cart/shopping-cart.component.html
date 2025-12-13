@@ -1,6 +1,9 @@
 @let products = shopStateService.getSelectedProducts();
 <div class="cart">
-  <div class="header text-2xl m-4 mb-6">Carrito de compras ({{ products.length }})</div>
+  <div class="header flex items-center gap-2 my-4 mx-2">
+    <i class="pi pi-angle-left text-2xl" (click)="return()"></i>
+    <div class="text-2xl">Carrito de compras ({{ products.length }})</div>
+  </div>
   <div class="flex flex-col">
     @for (product of products; track product.id) {
     <app-shopping-cart-item [product]="product" />

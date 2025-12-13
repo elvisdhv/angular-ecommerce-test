@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { ShopStateService } from '../../services/shop-state.service';
 import { ShoppingCartItemComponent } from './shopping-cart-item/shopping-cart-item.component';
 
@@ -11,4 +12,8 @@ import { ShoppingCartItemComponent } from './shopping-cart-item/shopping-cart-it
 })
 export class ShoppingCartComponent {
   shopStateService = inject(ShopStateService);
+  router = inject(Router);
+  return() {
+    this.router.navigate(['']);
+  }
 }

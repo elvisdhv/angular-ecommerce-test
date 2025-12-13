@@ -4,17 +4,17 @@
     <i class="text-xl pi pi-shopping-cart" (click)="openCart()"></i>
   </div>
   <div class="categories px-2 overflow-auto flex flex-nowrap py-2">
-    @for (category of categories(); track category) {
+    @for (category of shopService.getCategories(); track category) {
     <span class="category text-nowrap text-sm rounded-sm px-2 mx-0.5 bg-[--primary]">
       {{ category }}
     </span>
     }
   </div>
   <div class="articles grid">
-    @for (product of products(); track product.id) { @defer(on viewport) {
+    @for (product of shopService.getProducts(); track product.id) { @defer (on viewport) {
     <app-product-item [product]="product" />
-    }@placeholder {
-    <div class="product-placeholder h-96"></div>
+    } @placeholder {
+    <div class="product-placeholder h-108"></div>
     } }
   </div>
 </main>
