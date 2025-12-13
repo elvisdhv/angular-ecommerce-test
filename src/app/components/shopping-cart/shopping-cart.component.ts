@@ -1,0 +1,14 @@
+import { Component, inject } from '@angular/core';
+import { ShopStateService } from '../../services/shop-state.service';
+import { ShoppingCartItemComponent } from './shopping-cart-item/shopping-cart-item.component';
+
+@Component({
+  selector: 'app-shopping-cart',
+  standalone: true,
+  imports: [ShoppingCartItemComponent],
+  templateUrl: './shopping-cart.component.html',
+  styleUrl: './shopping-cart.component.scss',
+})
+export class ShoppingCartComponent {
+  shopStateService = inject(ShopStateService);
+}

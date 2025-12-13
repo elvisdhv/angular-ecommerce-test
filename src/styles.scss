@@ -8,6 +8,9 @@
   --primary-dark: var(--color-blue-900);
   --on-primary-dark: var(--color-neutral-50);
   --surface: var(--color-neutral-50);
+  --surface-200: var(--color-neutral-200);
 }
-body {
+body,
+html {
+  background-color: var(--surface);
 }

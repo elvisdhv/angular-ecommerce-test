@@ -1,0 +1,11 @@
+<div class="cart-item flex m-4 my-2 p-4 gap-2 shadow rounded-lg">
+  <div class="img w-16">
+    <img [src]="product().image" [alt]="product().title" />
+  </div>
+  <div class="stats w-full flex justify-between items-start">
+    <span class="title ml-2">
+      {{ product().title }}
+    </span>
+    <span class="price rounded-2xl px-2 text-sm ml-1"> ${{ product().price }} </span>
+  </div>
+</div>

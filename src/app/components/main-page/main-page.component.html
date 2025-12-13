@@ -1,11 +1,11 @@
 <main>
   <div class="title flex items-center justify-between px-4 sticky top-0">
     <h1 class="text-2xl text-center my-4">Angular Shop</h1>
-    <i class="text-xl pi pi-shopping-cart"></i>
+    <i class="text-xl pi pi-shopping-cart" (click)="openCart()"></i>
   </div>
   <div class="categories px-2 overflow-auto flex flex-nowrap py-2">
     @for (category of categories(); track category) {
-    <span class="text-nowrap text-sm border rounded-sm px-2 mx-0.5 bg-[--primary]">
+    <span class="category text-nowrap text-sm rounded-sm px-2 mx-0.5 bg-[--primary]">
       {{ category }}
     </span>
     }
