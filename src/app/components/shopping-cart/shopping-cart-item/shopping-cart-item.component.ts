@@ -1,5 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { ProductModel } from '../../../models/product-model';
+import { ShopStateService } from '../../../services/shop-state.service';
 
 @Component({
   selector: 'app-shopping-cart-item',
@@ -10,4 +11,5 @@ import { ProductModel } from '../../../models/product-model';
 })
 export class ShoppingCartItemComponent {
   product = input.required<ProductModel>();
+  protected shopService = inject(ShopStateService);
 }

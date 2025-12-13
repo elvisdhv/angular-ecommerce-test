@@ -21,7 +21,9 @@ export class ShopStateService {
   }
   public removeProductFromCart(productId: number) {
     this.selectedProducts.update((p) => {
-      return p.filter((product) => product.id != productId);
+      const firstproductById = p.findIndex((product) => product.id === productId);
+      p.splice(firstproductById, 1);
+      return p;
     });
   }
   public initProducts() {

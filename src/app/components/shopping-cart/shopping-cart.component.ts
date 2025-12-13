@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { ConfirmationService } from 'primeng/api';
 import { ShopStateService } from '../../services/shop-state.service';
 import { ShoppingCartItemComponent } from './shopping-cart-item/shopping-cart-item.component';
 @Component({
@@ -15,5 +14,8 @@ export class ShoppingCartComponent {
   private router = inject(Router);
   return() {
     this.router.navigate(['']);
+  }
+  goToFinishBuy() {
+    this.router.navigate(['buy']);
   }
 }
