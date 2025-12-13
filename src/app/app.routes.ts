@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { BuyComponent } from './components/buy/buy.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { canBuyGuard } from './guards/can-buy.guard';
 
 export const routes: Routes = [
   {
@@ -10,7 +11,8 @@ export const routes: Routes = [
   },
   {
     path: 'cart',
+    canActivate: [canBuyGuard],
     loadComponent: () => ShoppingCartComponent,
   },
-  { path: 'buy', loadComponent: () => BuyComponent },
+  { path: 'buy', canActivate: [canBuyGuard], loadComponent: () => BuyComponent },
 ];

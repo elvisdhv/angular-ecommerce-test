@@ -1,17 +1,22 @@
 <div class="payment flex flex-col w-full items-center">
-  <div class="greetings text-2xl font-bold p-4 text-center">Hola (Nombre de usuario)</div>
-  <div class="attention flex flex-col px-6 mt-4 rounded-xl">
-    <div class="reminder">Está a punto de comprar <b class="rounded-2xl">12</b> productos</div>
-    <div class="total-price">
-      Precio total
-      <b> $450 </b>
-    </div>
+  <div class="greetings text-2xl font-bold p-4 text-center">
+    Hola {{ shopService.getUsername() }}
   </div>
   <form
     [formGroup]="finishBuyFormGroup"
     (ngSubmit)="submit($event)"
     class="m-6 flex flex-col justify-stretch gap-4 shadow p-4 rounded-lg w-full"
   >
+    <div class="attention flex flex-col px-6 mt-4 rounded-xl">
+      <div class="reminder">
+        Está a punto de comprar
+        <b class="rounded-2xl">{{ shopService.getSelectedProducts().length }}</b> productos
+      </div>
+      <div class="total-price">
+        Precio total
+        <b> ${{ totalPrice() }} </b>
+      </div>
+    </div>
     <!-- <div class="text-sm text-center opacity-80">Por favor ingrese los datos</div> -->
     <label [ngClass]="{ error: cardNumberError() }">
       Tarjeta de Credito
@@ -24,13 +29,27 @@
       <small>Ingrese el numero de la tarjeta de pago</small>
       }
     </label>
-    <label [ngClass]="{ error: passworDoesNotMatch() }">
+    <label [ngClass]="{ error: passworDoesNotMatch() || wrongPassword() }">
       Contraseña
       <input type="password" formControlName="password" />
+      @if (wrongPassword()) {
+      <small>La contraseña es incorrecta</small>
+      } @if (blankPassword()) {
+      <small>La contraseña es obligatoria</small>
+      } @if (passworDoesNotMatch()) {
+      <small>Las contraseñas son diferentes</small>
+      }
     </label>
-    <label [ngClass]="{ error: passworDoesNotMatch() }">
+    <label [ngClass]="{ error: passworDoesNotMatch() || wrongPassword() }">
       Confirme la contraseña
       <input type="password" formControlName="confirmPassword" />
+      @if (wrongPassword()) {
+      <small>La contraseña es incorrecta</small>
+      } @if (blankConfirmPassword()) {
+      <small>Confirme su contraseña</small>
+      } @if (passworDoesNotMatch()) {
+      <small>Las contraseñas son diferentes</small>
+      }
     </label>
     <button>Completar Compra</button>
   </form>
