@@ -1,0 +1,10 @@
+@if (messageService.getMessage().length!=0) {
+<div class="w-full fixed min-h-24 justify p-4 py-5 bottom-0 flex">
+  <span
+    [ngClass]="{ error: messageService.isError() }"
+    class="rounded-lg flex items-center py-0 px-4"
+  >
+    <p class="w-full text-sm">{{ messageService.getMessage() }}</p>
+  </span>
+</div>
+}

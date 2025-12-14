@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+span {
+  background-color: var(--primary-dark);
+  color: var(--on-primary);
+  width: 90vw;
+  transition: 0.2s;
+}
+.error {
+  background-color: var(--color-red-500);
+  color: var(--on-primary);
+}

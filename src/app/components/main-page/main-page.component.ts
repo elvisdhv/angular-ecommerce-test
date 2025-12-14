@@ -4,6 +4,7 @@ import { ControlEvent, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DividerModule } from 'primeng/divider';
 import { ProductModel } from '../../models/product-model';
+import { GlobalMessageServiceService } from '../../services/global-message-service.service';
 import { ShopStateService } from '../../services/shop-state.service';
 import { StoreApiService } from '../../services/store-api-service.service';
 import { ProductItemComponent } from './product-item/product-item.component';
@@ -19,6 +20,7 @@ export class MainPageComponent implements OnInit {
   router = inject(Router);
   apiService = inject(StoreApiService);
   shopService = inject(ShopStateService);
+  messageService = inject(GlobalMessageServiceService);
   searchFormControl = new FormControl('');
   private productsBySearchFilter = signal<ProductModel[]>([]);
   productsByCategoryFilter = computed<ProductModel[]>(() => {
@@ -45,7 +47,11 @@ export class MainPageComponent implements OnInit {
   }
 
   openCart() {
-    this.router.navigate(['cart']);
+    this.router.navigate(['cart']).then((res) => {
+      if (!res) {
+        this.messageService.setMessage('No hay productos en el carrito');
+      }
+    });
   }
   changeCategory(category: string) {
     this.selectedCategory.set(category);
