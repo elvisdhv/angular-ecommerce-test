@@ -1,14 +1,17 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, effect, inject, model, OnInit, signal } from '@angular/core';
+import { ControlEvent, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DividerModule } from 'primeng/divider';
+import { ProductModel } from '../../models/product-model';
 import { ShopStateService } from '../../services/shop-state.service';
 import { StoreApiService } from '../../services/store-api-service.service';
 import { ProductItemComponent } from './product-item/product-item.component';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-main-page',
   standalone: true,
-  imports: [DividerModule, ProductItemComponent],
+  imports: [DividerModule, ProductItemComponent, ReactiveFormsModule, NgClass],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss',
 })
@@ -16,8 +19,23 @@ export class MainPageComponent implements OnInit {
   router = inject(Router);
   apiService = inject(StoreApiService);
   shopService = inject(ShopStateService);
+  searchFormControl = new FormControl('');
+  productsBySearchFilter = signal<ProductModel[]>([]);
+  selectedCategory = model(this.shopService.getCategories()[0]);
+  constructor() {
+    effect(() => {
+      this.productsBySearchFilter.set(this.shopService.getProducts());
+    });
+  }
   ngOnInit(): void {
     this.shopService.initProducts();
+    this.searchFormControl.events.subscribe((e: ControlEvent<string>) => {
+      this.productsBySearchFilter.set(
+        this.shopService
+          .getProducts()
+          .filter((p) => p.title.toLowerCase().includes((e.source.value as string).toLowerCase()))
+      );
+    });
   }
 
   openCart() {

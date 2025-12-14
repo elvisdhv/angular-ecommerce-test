@@ -17,7 +17,7 @@ export class ShopStateService {
   public getUsername = computed(() => this.username());
   public getUserPassword = computed(() => this.userPassword());
   public getProducts = computed(() => this.products());
-  public getCategories = computed(() => this.categories());
+  public getCategories = computed(() => ['Todos'].concat(this.categories()));
   public getSelectedProducts = computed(() => this.selectedProducts());
   public addProductToCart(product: ProductModel) {
     this.selectedProducts.update((p) => {

@@ -1,14 +1,28 @@
-.title {
+main {
+  background-color: var(--surface-200);
+}
+header {
   background: var(--surface);
 }
 .articles {
   grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+  background: var(--surface-bottom);
+  background: var(--color-red-900);
 }
 
+.categories::-webkit-scrollbar {
+  display: none;
+}
+.categories {
+  scrollbar-width: none;
+}
 .category {
-  background-color: var(--surface-200);
+  background-color: var(--surface-100);
 }
-
+.category.active {
+  background-color: var(--primary);
+  color: var(--on-primary);
+}
 .products-amount {
   background: var(--primary-dark);
   color: var(--on-primary-dark);

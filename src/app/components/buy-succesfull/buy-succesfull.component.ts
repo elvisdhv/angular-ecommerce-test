@@ -20,6 +20,6 @@ export class BuySuccesfullComponent implements OnInit {
     this.selectedProducts.set(history.state.products);
   }
   backToShop() {
-    this.router.navigate(['']);
+    this.router.navigate([''], { replaceUrl: true });
   }
 }
