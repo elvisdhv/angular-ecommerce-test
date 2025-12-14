@@ -45,4 +45,7 @@ export class ShopStateService {
   public finishBuy() {
     this.selectedProducts.set([]);
   }
+  public getProductById(productId: number): ProductModel {
+    return this.getProducts().filter((p) => p.id === productId)[0]!;
+  }
 }

@@ -1,9 +1,10 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, effect, inject, input } from '@angular/core';
+import { Router } from '@angular/router';
 import { BadgeModule } from 'primeng/badge';
 import { ButtonModule } from 'primeng/button';
+import { ClickActionDirective } from '../../../directives/click-action.directive';
 import { ProductModel } from '../../../models/product-model';
 import { ShopStateService } from '../../../services/shop-state.service';
-import { ClickActionDirective } from '../../../directives/click-action.directive';
 @Component({
   selector: 'app-product-item',
   standalone: true,
@@ -12,9 +13,14 @@ import { ClickActionDirective } from '../../../directives/click-action.directive
   styleUrl: './product-item.component.scss',
 })
 export class ProductItemComponent {
+  router = inject(Router);
   shopStateService = inject(ShopStateService);
   product = input.required<ProductModel>();
+
   addToCart() {
     this.shopStateService.addProductToCart(this.product());
+  }
+  goToDetails() {
+    this.router.navigate(['/details', this.product().id]);
   }
 }

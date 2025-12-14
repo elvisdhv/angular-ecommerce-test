@@ -1,0 +1,28 @@
+<div class="product-details w-full">
+  <div class="image-and-name flex items-center p-4 gap-2 shadow">
+    <div class="img max-w-40">
+      <img [src]="product()?.image" [alt]="product()?.title" />
+    </div>
+    <span>
+      {{ product()?.title }}
+    </span>
+  </div>
+  <div class="misc flex flex-col p-4">
+    <div class="price-and-rating flex justify-between mb-2">
+      <div class="price px-2 bg-white rounded-2xl">${{ product()?.price }}</div>
+      <div class="rating flex items-center gap-1">
+        {{ product()?.rating?.rate }}
+        <i class="pi pi-star bg-gray-500 text-white rounded-2xl p-1"></i>
+      </div>
+    </div>
+    <div class="description mx-1">
+      {{ product()?.description }}
+    </div>
+    <div class="add-to-cart w-full flex justify-end mt-4">
+      <button (click)="addToCart()" class="px-4 p-1 rounded-2xl">
+        Añadir al carrito
+        <i class="pi pi-shopping-cart text-sm"></i>
+      </button>
+    </div>
+  </div>
+</div>

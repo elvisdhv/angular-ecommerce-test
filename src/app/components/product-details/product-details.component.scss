@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+
+.product-details {
+  background-color: var(--surface-200);
+}
+
+.image-and-name {
+  background: var(--surface);
+}
+.add-to-cart button {
+  background: var(--primary);
+  color: var(--on-primary);
+}

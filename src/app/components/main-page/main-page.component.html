@@ -1,7 +1,16 @@
 <main>
   <header class="sticky top-0 shadow">
-    <div class="title flex items-center justify-between px-4">
+    <div class="flex title items-center justify-between px-4">
       <h1 class="text-2xl text-center my-4">Angular Shop</h1>
+      <div class="hidden sm:flex grow search-section px-4 gap-3 mx-2 items-center">
+        <input
+          type="text"
+          class="grow my-2 px-2 border rounded-sm py-0.5"
+          placeholder="Buscar producto"
+          [formControl]="searchFormControl"
+        />
+        <i class="pi pi-search"></i>
+      </div>
       <span class="text-2xl">
         <i class="pi pi-shopping-cart" (click)="openCart()"></i>
         <span class="products-amount text-sm rounded-2xl mx-0.5 p-1.5">{{
@@ -9,7 +18,7 @@
         }}</span>
       </span>
     </div>
-    <div class="search-section flex px-4 gap-3 mx-2 items-center">
+    <div class="flex sm:hidden search-section px-4 gap-3 mx-2 items-center">
       <input
         type="text"
         class="grow my-2 px-2 border rounded-sm py-0.5"
