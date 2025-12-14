@@ -22,6 +22,7 @@
   <div class="categories px-2 overflow-auto flex flex-nowrap py-2">
     @for (category of shopService.getCategories(); track category) {
     <span
+      (click)="changeCategory(category)"
       [ngClass]="{ active: selectedCategory() === category }"
       class="category text-nowrap text-sm rounded-sm px-2 mx-0.5 bg-[--primary]"
     >
@@ -30,7 +31,7 @@
     }
   </div>
   <div class="articles grid">
-    @for (product of productsBySearchFilter(); track product.id) { @defer (on viewport) {
+    @for (product of productsByCategoryFilter(); track product.id) { @defer (on viewport) {
     <app-product-item [product]="product" />
     } @placeholder {
     <div class="product-placeholder h-108"></div>

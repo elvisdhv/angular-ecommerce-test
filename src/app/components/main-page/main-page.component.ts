@@ -1,4 +1,5 @@
-import { Component, effect, inject, model, OnInit, signal } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { Component, computed, effect, inject, model, OnInit, signal } from '@angular/core';
 import { ControlEvent, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DividerModule } from 'primeng/divider';
@@ -6,7 +7,6 @@ import { ProductModel } from '../../models/product-model';
 import { ShopStateService } from '../../services/shop-state.service';
 import { StoreApiService } from '../../services/store-api-service.service';
 import { ProductItemComponent } from './product-item/product-item.component';
-import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-main-page',
@@ -20,7 +20,13 @@ export class MainPageComponent implements OnInit {
   apiService = inject(StoreApiService);
   shopService = inject(ShopStateService);
   searchFormControl = new FormControl('');
-  productsBySearchFilter = signal<ProductModel[]>([]);
+  private productsBySearchFilter = signal<ProductModel[]>([]);
+  productsByCategoryFilter = computed<ProductModel[]>(() => {
+    if (this.selectedCategory() === this.shopService.getCategories()[0]) {
+      return this.productsBySearchFilter();
+    }
+    return this.productsBySearchFilter().filter((p) => p.category == this.selectedCategory());
+  });
   selectedCategory = model(this.shopService.getCategories()[0]);
   constructor() {
     effect(() => {
@@ -40,5 +46,8 @@ export class MainPageComponent implements OnInit {
 
   openCart() {
     this.router.navigate(['cart']);
+  }
+  changeCategory(category: string) {
+    this.selectedCategory.set(category);
   }
 }
