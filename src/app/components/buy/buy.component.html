@@ -29,7 +29,7 @@
       <small>Ingrese el numero de la tarjeta de pago</small>
       }
     </label>
-    <label [ngClass]="{ error: passworDoesNotMatch() || wrongPassword() }">
+    <label [ngClass]="{ error: passworDoesNotMatch() || wrongPassword() || blankPassword() }">
       Contraseña
       <input type="password" formControlName="password" />
       @if (wrongPassword()) {
@@ -40,7 +40,9 @@
       <small>Las contraseñas son diferentes</small>
       }
     </label>
-    <label [ngClass]="{ error: passworDoesNotMatch() || wrongPassword() }">
+    <label
+      [ngClass]="{ error: passworDoesNotMatch() || wrongPassword() || blankConfirmPassword() }"
+    >
       Confirme la contraseña
       <input type="password" formControlName="confirmPassword" />
       @if (wrongPassword()) {

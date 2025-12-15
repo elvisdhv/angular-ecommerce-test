@@ -12,8 +12,8 @@ export class ShopStateService {
   private products = signal<ProductModel[]>([]);
   private categories = signal<string[]>([]);
   private selectedProducts = signal<ProductModel[]>([]);
-  private username = signal('Sin Nombre de Usuario');
-  private userPassword = signal('nopassword');
+  private username = signal('');
+  private userPassword = signal('');
   public getUsername = computed(() => this.username());
   public getUserPassword = computed(() => this.userPassword());
   public getProducts = computed(() => this.products());
@@ -47,5 +47,9 @@ export class ShopStateService {
   }
   public getProductById(productId: number): ProductModel {
     return this.getProducts().filter((p) => p.id === productId)[0]!;
+  }
+  public login(username: string, password: string) {
+    this.username.set(username);
+    this.userPassword.set(password);
   }
 }

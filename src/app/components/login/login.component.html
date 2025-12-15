@@ -1,0 +1,35 @@
+<div class="login-container min-h-dvh flex items-center justify-center py-12 px-4">
+  <div class="login-card max-w-2xl w-full p-10 lg:pb-24 rounded-lg shadow">
+    <h2 class="login-title text-center text-3xl font-bold mb-2">Bienvenido/a a la Tienda</h2>
+    <p class="text-center self-center mb-8">Por favor inicie sesión</p>
+    <form class="login-form flex flex-col gap-6" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="input-group relative">
+        <input
+          id="username"
+          formControlName="username"
+          type="text"
+          required
+          class="login-input"
+          placeholder="Nombre de usuario"
+        />
+      </div>
+      <div class="input-group">
+        <input
+          id="password"
+          formControlName="password"
+          type="password"
+          required
+          class="login-input"
+          placeholder="Contraseña"
+        />
+      </div>
+      <button
+        type="submit"
+        [disabled]="loginForm.invalid"
+        class="login-button w-full py-3 px-4 font-medium text-sm border-none rounded-md cursor-pointer"
+      >
+        Iniciar sesión
+      </button>
+    </form>
+  </div>
+</div>

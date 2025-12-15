@@ -39,7 +39,7 @@
     </span>
     }
   </div>
-  <div class="articles grid">
+  <div class="articles grid gap-2 mx-2">
     @for (product of productsByCategoryFilter(); track product.id) { @defer (on viewport) {
     <app-product-item [product]="product" />
     } @placeholder {
