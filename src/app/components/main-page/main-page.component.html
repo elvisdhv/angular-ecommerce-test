@@ -12,7 +12,7 @@
         <i class="pi pi-search"></i>
       </div>
       <span class="text-2xl">
-        <i class="pi pi-shopping-cart" (click)="openCart()"></i>
+        <i class="pi pi-shopping-cart cursor-pointer" (click)="openCart()"></i>
         <span class="products-amount text-sm rounded-2xl mx-0.5 p-1.5">{{
           shopService.getSelectedProducts().length
         }}</span>
@@ -33,7 +33,7 @@
     <span
       (click)="changeCategory(category)"
       [ngClass]="{ active: selectedCategory() === category }"
-      class="category text-nowrap text-sm rounded-sm px-2 mx-0.5 bg-[--primary]"
+      class="category select-none cursor-pointer text-nowrap text-sm rounded-sm px-2 mx-0.5 bg-[--primary]"
     >
       {{ category }}
     </span>

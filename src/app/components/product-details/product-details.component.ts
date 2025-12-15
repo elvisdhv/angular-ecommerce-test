@@ -3,12 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductModel } from '../../models/product-model';
 import { GlobalMessageServiceService } from '../../services/global-message-service.service';
 import { ShopStateService } from '../../services/shop-state.service';
-import { ShortDescriptionPipe } from '../../pipes/short-description.pipe';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [ShortDescriptionPipe],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss',
 })

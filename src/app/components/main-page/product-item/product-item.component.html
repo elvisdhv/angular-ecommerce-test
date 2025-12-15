@@ -13,9 +13,11 @@
     <img [src]="product().image" alt="" />
   </div>
   <div class="actions flex justify-between items-center mt-6">
-    <button (click)="goToDetails()" class="rounded-2xl py-1 px-3 font-bold">Ver detalles</button>
+    <button (click)="goToDetails()" class="rounded-2xl py-1 px-3 font-bold cursor-pointer">
+      Ver detalles
+    </button>
     <button (click)="addToCart()" class="cart-plus flex px-4 py-1 rounded-2xl gap-1 items-center">
-      <span class="font-semibold">Agregar al carrito</span>
+      <span class="font-semibold cursor-pointer">Agregar al carrito</span>
       <i class="pi pi-cart-plus"></i>
     </button>
   </div>
