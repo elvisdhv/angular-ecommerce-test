@@ -32,7 +32,7 @@ export class ProductDetailsComponent implements OnInit {
   addToCart() {
     if (this.product() != null) {
       this.shopService.addProductToCart(this.product()!);
-      this.messageService.setMessage('Producto agregado al carrito');
+      this.messageService.setMessage('Producto añadido al carrito');
     }
   }
 }

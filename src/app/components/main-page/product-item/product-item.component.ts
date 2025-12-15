@@ -21,7 +21,7 @@ export class ProductItemComponent {
 
   addToCart() {
     this.shopStateService.addProductToCart(this.product());
-    this.messageService.setMessage('Producto agregado al carrito');
+    this.messageService.setMessage('Producto añadido al carrito');
   }
   goToDetails() {
     this.router.navigate(['/details', this.product().id]);
