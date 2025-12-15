@@ -3,17 +3,17 @@
 @import 'tailwindcss';
 @import 'primeicons/primeicons.css';
 :root {
-  --primary: var(--color-gray-500);
+  --primary: var(--color-blue-500);
   --primary-400: var(--color-gray-200);
-  --on-primary: var(--color-neutral-50);
-  --primary-dark: var(--color-gray-700);
-  --on-primary-dark: var(--color-neutral-50);
-  --surface: var(--color-neutral-50);
-  --surface-100: var(--color-neutral-100);
-  --surface-200: var(--color-neutral-200);
-  --surface-400: var(--color-neutral-400);
-  --surface-700: var(--color-neutral-700);
-  --on-surface-700: var(--color-neutral-50);
+  --on-primary: var(--color-gray-50);
+  --primary-dark: var(--color-blue-700);
+  --on-primary-dark: var(--color-gray-50);
+  --surface: var(--color-gray-50);
+  --surface-100: var(--color-gray-100);
+  --surface-200: var(--color-gray-200);
+  --surface-400: var(--color-gray-400);
+  --surface-700: var(--color-gray-700);
+  --on-surface-700: var(--color-gray-50);
 }
 body,
 html {
