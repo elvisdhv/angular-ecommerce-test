@@ -1,6 +1,6 @@
 import { Component, inject, input } from '@angular/core';
 import { ProductModel } from '../../../models/product-model';
-import { ShopStateService } from '../../../services/shop-state.service';
+import { ShopState } from '../../../states/shop.state';
 
 @Component({
   selector: 'app-shopping-cart-item',
@@ -12,5 +12,5 @@ import { ShopStateService } from '../../../services/shop-state.service';
 export class ShoppingCartItemComponent {
   product = input.required<ProductModel>();
   deleteButton = input(true);
-  protected shopService = inject(ShopStateService);
+  protected shopState = inject(ShopState);
 }

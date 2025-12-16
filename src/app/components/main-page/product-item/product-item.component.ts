@@ -5,7 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { ClickActionDirective } from '../../../directives/click-action.directive';
 import { ProductModel } from '../../../models/product-model';
 import { GlobalMessageServiceService } from '../../../services/global-message-service.service';
-import { ShopStateService } from '../../../services/shop-state.service';
+import { ShopState } from '../../../states/shop.state';
 @Component({
   selector: 'app-product-item',
   standalone: true,
@@ -15,12 +15,12 @@ import { ShopStateService } from '../../../services/shop-state.service';
 })
 export class ProductItemComponent {
   private router = inject(Router);
-  private shopStateService = inject(ShopStateService);
+  private shopState = inject(ShopState);
   private messageService = inject(GlobalMessageServiceService);
   product = input.required<ProductModel>();
 
   addToCart() {
-    this.shopStateService.addProductToCart(this.product());
+    this.shopState.addProductToCart(this.product());
     this.messageService.setMessage('Producto añadido al carrito');
   }
   goToDetails() {

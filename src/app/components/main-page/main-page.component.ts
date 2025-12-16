@@ -5,8 +5,7 @@ import { Router } from '@angular/router';
 import { DividerModule } from 'primeng/divider';
 import { ProductModel } from '../../models/product-model';
 import { GlobalMessageServiceService } from '../../services/global-message-service.service';
-import { ShopStateService } from '../../services/shop-state.service';
-import { StoreApiService } from '../../services/store-api-service.service';
+import { ShopState } from '../../states/shop.state';
 import { ProductItemComponent } from './product-item/product-item.component';
 
 @Component({
@@ -18,29 +17,27 @@ import { ProductItemComponent } from './product-item/product-item.component';
 })
 export class MainPageComponent implements OnInit {
   router = inject(Router);
-  apiService = inject(StoreApiService);
-  shopService = inject(ShopStateService);
+  shopState = inject(ShopState);
   messageService = inject(GlobalMessageServiceService);
   searchFormControl = new FormControl('');
   private productsBySearchFilter = signal<ProductModel[]>([]);
   productsByCategoryFilter = computed<ProductModel[]>(() => {
-    if (this.selectedCategory() === this.shopService.getCategories()[0]) {
+    if (this.selectedCategory() === this.shopState.categories()[0]) {
       return this.productsBySearchFilter();
     }
     return this.productsBySearchFilter().filter((p) => p.category == this.selectedCategory());
   });
-  selectedCategory = model(this.shopService.getCategories()[0]);
+  selectedCategory = model(this.shopState.categoriesList()[0]);
   constructor() {
     effect(() => {
-      this.productsBySearchFilter.set(this.shopService.getProducts());
+      this.productsBySearchFilter.set(this.shopState.products());
     });
   }
   ngOnInit(): void {
-    this.shopService.initProducts();
     this.searchFormControl.events.subscribe((e: ControlEvent<string>) => {
       this.productsBySearchFilter.set(
-        this.shopService
-          .getProducts()
+        this.shopState
+          .products()
           .filter((p) => p.title.toLowerCase().includes((e.source.value as string).toLowerCase()))
       );
     });

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { ShopStateService } from '../../services/shop-state.service';
+import { ShopState } from '../../states/shop.state';
 import { ShoppingCartItemComponent } from './shopping-cart-item/shopping-cart-item.component';
 @Component({
   selector: 'app-shopping-cart',
@@ -10,7 +10,7 @@ import { ShoppingCartItemComponent } from './shopping-cart-item/shopping-cart-it
   styleUrl: './shopping-cart.component.scss',
 })
 export class ShoppingCartComponent {
-  protected shopStateService = inject(ShopStateService);
+  protected shopState = inject(ShopState);
   private router = inject(Router);
   return() {
     this.router.navigate(['']);

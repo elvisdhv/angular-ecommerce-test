@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import 'zone.js';
 import { MessageComponent } from './global-components/message/message.component';
 import { StoreApiService } from './services/store-api-service.service';
 

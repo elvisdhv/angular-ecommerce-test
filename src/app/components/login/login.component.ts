@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GlobalMessageServiceService } from '../../services/global-message-service.service';
-import { ShopStateService } from '../../services/shop-state.service';
+import { ShopState } from '../../states/shop.state';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,7 @@ import { ShopStateService } from '../../services/shop-state.service';
 export class LoginComponent {
   private router = inject(Router);
   private fb = inject(FormBuilder);
-  private shopService = inject(ShopStateService);
+  private shopState = inject(ShopState);
   private messageService = inject(GlobalMessageServiceService);
   loginForm: FormGroup;
 
@@ -27,7 +27,7 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      this.shopService.login(
+      this.shopState.login(
         this.loginForm.get('username')?.value as string,
         this.loginForm.get('password')?.value as string
       );

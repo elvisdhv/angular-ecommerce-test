@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
-import { ShopStateService } from '../../services/shop-state.service';
+import { ShopState } from '../../states/shop.state';
 @Component({
   selector: 'app-buy',
   standalone: true,
@@ -14,7 +14,7 @@ import { ShopStateService } from '../../services/shop-state.service';
   styleUrl: './buy.component.scss',
 })
 export class BuyComponent implements OnInit {
-  shopService = inject(ShopStateService);
+  shopState = inject(ShopState);
   formBuilder = inject(FormBuilder);
   router = inject(Router);
   finishBuyFormGroup!: FormGroup;
@@ -30,7 +30,7 @@ export class BuyComponent implements OnInit {
   }
   totalPrice() {
     let acc = 0;
-    this.shopService.getSelectedProducts().forEach((p) => (acc += p.price));
+    this.shopState.selectedProducts().forEach((p) => (acc += p.price));
     return acc;
   }
   initFormGroup(fb: FormBuilder): FormGroup {
@@ -86,7 +86,7 @@ export class BuyComponent implements OnInit {
       this.blankPassword.set(false);
       this.blankConfirmPassword.set(false);
       this.wrongPassword.set(false);
-    } else if (this.shopService.getUserPassword() != this.password?.value) {
+    } else if (this.shopState.userPassword() != this.password?.value) {
       this.wrongPassword.set(true);
       this.cardNumberError.set(false);
       this.blankPassword.set(false);
@@ -105,10 +105,10 @@ export class BuyComponent implements OnInit {
     this.finishBuyFormGroup.reset();
     this.router.navigate(['buy-succesfull'], {
       state: {
-        products: this.shopService.getSelectedProducts(),
+        products: this.shopState.selectedProducts(),
         total: this.totalPrice(),
       },
     });
-    this.shopService.finishBuy();
+    this.shopState.finishBuy();
   }
 }
